@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html>
+ <head>
+<title>Youtube clone</title>
+ 
+  <style>
+
+    .thumbnail
+    { 
+      height: auto;
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .channelprofile
+     {height: 30px;
+      border-radius: 20px;
+      }
+     
+     .videotitle
+     {
+       margin-top: 0;
+       margin-bottom: 0;
+       font-size: 14px;
+       font-weight: 700;
+     }
+     .videoauthor
+     {
+        margin-top: 2px;
+       margin-bottom: 0;
+       font-size: 14px;
+       font-weight: 500;
+     }
+     .videostats
+     {
+        margin-top: 0;
+       margin-bottom: 0;
+       font-size: 14px;
+       font-weight: 500;
+     }
+     .thumbnailstats
+      {
+        display: inline-block;
+       
+        margin-left: 7px;
+      }
+    .thumbnailrow
+    {
+      display: flex;
+      align-items: flex-start;
+    }
+    
+      .wholethumbnail
+      { width: 100%;
+        position: relative;  
+        cursor: pointer;
+        transition: filter 0.2s;
+      }
+      .wholethumbnail:hover
+      {
+       filter: brightness(0.6);
+       }
+       .wholethumbnail:active
+       {
+        transform: scale(0.96);
+       }
+    .videos
+      {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        column-gap: 16px;
+        row-gap: 40px;
+
+      }
+      
+      .videotime
+      {
+        position: absolute;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.6);
+        bottom: 80px;
+        right: 8px;
+        padding-left: 4px;
+        padding-bottom: 1px;
+        padding-right: 4px;
+        padding-top: 1px;
+        font-size: 12px;
+        font-weight: 500;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+     .videotime1
+     { 
+       position: absolute;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.6);
+        bottom: 80px;
+        right: 8px;
+        padding-left: 4px;
+        padding-bottom: 1px;
+        padding-right: 4px;
+        padding-top: 1px;
+        font-size: 12px;
+        font-weight: 500;
+        border-radius: 4px;
+        cursor: pointer;
+     }
+        .videotime2
+        {
+            position: absolute;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.6);
+        bottom: 98px;
+        right: 8px;
+        padding-left: 4px;
+        padding-bottom: 1px;
+        padding-right: 4px;
+        padding-top: 1px;
+        font-size: 12px;
+        font-weight: 500;
+        border-radius: 4px;
+        cursor: pointer;
+        }
+        .videotime3
+        {
+            position: absolute;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.6);
+        bottom: 98px;
+        right: 8px;
+        padding-left: 4px;
+        padding-bottom: 1px;
+        padding-right: 4px;
+        padding-top: 1px;
+        font-size: 12px;
+        font-weight: 500;
+        border-radius: 4px;
+        cursor: pointer; 
+        }
+        .videotime4
+        {
+            position: absolute;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.6);
+        bottom: 98px;
+        right: 8px;
+        padding-left: 4px;
+        padding-bottom: 1px;
+        padding-right: 4px;
+        padding-top: 1px;
+        font-size: 12px;
+        font-weight: 500;
+        border-radius: 4px;
+        cursor: pointer; 
+        }
+        .videotime5
+        {
+             position: absolute;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.6);
+        bottom: 98px;
+        right: 8px;
+        padding-left: 4px;
+        padding-bottom: 1px;
+        padding-right: 4px;
+        padding-top: 1px;
+        font-size: 12px;
+        font-weight: 500;
+        border-radius: 4px;
+        cursor: pointer;
+        }
+        .link
+        {
+          text-decoration: none;
+          color: inherit;
+        }
+  </style>
+
+<style>
+ 
+ .header
+ {
+    display: flex;
+    justify-content: space-between;
+    height: 56px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    background-color: white;
+ }
+ .left
+ {
+    
+    width: 180px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+ }
+ .middle
+ {
+    
+    display: flex;
+    flex: auto;
+    align-items: center;
+    justify-content: center;
+    
+ }
+ .right
+ {
+   
+    width: 180px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center
+ }
+ .searchbar
+{
+    height: 36px;
+    display: flex;
+    max-width: 580px;
+    min-width: 200px;
+    width: 100%;
+    border-radius: 20px;
+    border-color: rgb(219, 216, 216);
+    padding-left: 16px;
+    font-size: 16px;
+
+}
+.searchbar::placeholder
+ {
+    font-size: 16px;
+    border-color: rgb(219, 218, 218);
+}
+.hamburgermenu
+{
+   height: 22px;
+   cursor: pointer;
+}
+.hamburgermenu:active
+ {
+    transform: scale(0.96);
+ }
+.youtubelogo
+{
+    height: 22px;
+    cursor: pointer;
+}
+.youtubelogo:active
+{
+     transform: scale(0.96);
+}
+.upload
+{
+     height: 22px;
+     cursor: pointer;
+
+}
+.youtubeapps
+{
+     height: 22px;
+      cursor: pointer;
+}
+.notifications
+{   
+    height: 22px;
+     cursor: pointer;
+}
+.T
+{
+    height: 22px;
+    border-radius: 22px;
+     cursor: pointer;
+}
+.searchbuttonimg
+ {
+    height: 22px;
+    padding-top: 5px;
+    width: 30px;
+    border-color: rgb(219, 216, 216);
+
+ }
+.searchbutton
+{
+    height: 36px;
+    border-radius: 0px 20px 20px 0px; 
+    margin-left: -50px;
+    width: 60px;
+    border-color: rgb(219, 216, 216);
+     cursor: pointer;
+
+}
+.voicesearch
+{
+    height: 36px;
+    width: 36px;
+    margin-left: 20px;
+    border-radius: 18px;
+    border-color: rgb(219, 219, 219);
+     cursor: pointer;
+
+}
+
+.voicesearchimg
+{
+     height: 22px;
+    padding-top: 5px;
+    
+}
+.notifications:active
+{
+    transform: scale(0.96)
+}
+ .youtubeapps:active
+   {
+    transform: scale(0.96)
+   }
+ .upload:active
+    {
+        transform: scale(0.96)
+    } .T:active
+    {
+        transform: scale(0.96)
+    }
+    {
+  transform  scale (0.96);   
+   }
+ .notificationdiv
+ {
+    position: relative;
+ }
+ .notificationnum
+ {  
+    position: absolute;
+    color: white;
+    background-color: rgb(171, 1, 1);
+    font-size: 10px;
+    right: -3px;
+    top: -5px;
+    border-radius: 10px;
+    padding: 1px 5px 2px 5px;
+ }
+</style>
+
+<style>
+    .sidebar
+    {
+        position: fixed;
+        left: 0;
+        top: 56px;
+        width: 180px;
+        bottom: 0;
+        z-index: 200;
+        background-color: white;
+    }
+    .homebutton:active
+    {
+      transform: scale(0.96);
+    }
+    .sidebarbuttonsimg
+    {
+        height: 26px;
+        padding-left: 10px;
+        padding-right: 20px;
+    }
+    
+    .sidebarbuttonsp
+    {
+        width: 100%;
+        font-size: 15px;
+        text-align: left;
+
+    }
+
+        
+    .homebutton
+    {
+        height: 45px;
+        
+        width: 180px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background: none;
+        cursor: pointer;
+        transition: background-color 0.15s;
+    }
+    .homebutton:hover
+     {
+       background-color: rgb(205, 201, 201);
+     }
+
+</style>
+
+ </head>
+ <body style=" height: 800px;
+       margin: 0;
+       padding-top: 80px;
+       padding-left: 204px;
+       padding-right: 24px;
+       background-color: rgb(247, 244, 244);
+       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+
+
+<div class="header">
+ <div class="left">
+   <img class="hamburgermenu" src="hamburger-menu.svg">
+   <img class="youtubelogo" src="youtube-logo.svg">
+
+ </div>
+ 
+ <div class="middle">
+    <input  class="searchbar" type="search" placeholder="Search">
+    <button class="searchbutton">
+        <img class="searchbuttonimg" src="search.svg">
+    </button>
+   <button class="voicesearch">
+    <img class="voicesearchimg" src="voice-search-icon.svg">
+   </button>
+
+ </div>
+
+ <div class="right">
+    <img class="upload" src="upload.svg">
+    <img class="youtubeapps" src="youtube-apps.svg">
+    <div class="notificationdiv">
+     <img class="notifications" src="notifications.svg">
+     <div class="notificationnum">3</div>
+    </div>
+    
+    <img class="T" src="T.jpg">
+ </div>
+</div>
+
+<div class="sidebar">
+    <div class="sidebarbuttons">
+    <button class="homebutton">
+        <img class="sidebarbuttonsimg" src="home.svg">
+         <p class="sidebarbuttonsp">Home</p>
+    </button>
+   
+</div>
+
+<div class="sidebarbuttons">
+    <button class="homebutton">
+        <img class="sidebarbuttonsimg" src="explore.svg">
+        <p class="sidebarbuttonsp">Explore</p>
+    </button>
+    
+</div>
+
+<div class="sidebarbuttons">
+    <button class="homebutton">
+        <img class="sidebarbuttonsimg" src="subscriptions.svg">
+        <p class="sidebarbuttonsp">Subscriptions</p>
+    </button>
+    
+</div>
+
+<div class="sidebarbuttons">
+    <button class="homebutton">
+        <img class="sidebarbuttonsimg" src="originals.svg">
+        <p class="sidebarbuttonsp">Originals</p>
+    </button>
+    
+</div>
+
+<div class="sidebarbuttons">
+    <button class="homebutton">
+        <img class="sidebarbuttonsimg" src="youtube-music.svg">
+        <p class="sidebarbuttonsp">Youtube Music</p>
+    </button>
+    
+</div>
+
+<div class="sidebarbuttons">
+    <button class="homebutton">
+        <img class="sidebarbuttonsimg" src="library.svg">
+        <p class="sidebarbuttonsp">Library</p>
+    </button>
+    
+</div>
+
+
+</div>
+
+ <div class="videos">
+  <a class="link" href="https://youtu.be/odDvRxuP2wQ?si=E4PD1VDNg2EbK3cJ">
+    <div class="wholethumbnail">
+        <div class="thumbnailpic">
+        <img class="thumbnail" src="varanasi.avif">
+        </div>
+        <div class="videotime">3:42</div>
+    
+
+    <div class="thumbnailrow">
+        <div>
+        <img class="channelprofile" src="channels4_profile.jpg">
+        </div>
+
+        <div class="thumbnailstats">
+        <div>
+        <p class="videotitle">
+            S.S.Rajamouli's VARANASI to the WORLD!
+        </p>
+        </div>
+        <p class="videoauthor">
+            IMAX <span class="check"> &#10004</span>
+        </p>
+        
+        <div>
+            <p class="videostats">
+            1.6m views <span class="dot">&middot;</span> 3 days ago 
+        </p>
+        </div>
+    
+        </div>
+        
+    </div>
+    </div>  
+  </a>
+    
+    <a class="link" href="https://youtu.be/XVEjtloKlpM?si=Bn5BgHpxstISRJk2">
+       <div class="wholethumbnail">
+        <div class="thumbnailpic">
+        <img class="thumbnail" src="WB.avif">
+        </div>
+        <div class="videotime1">6:43</div>
+
+    <div class="thumbnailrow">
+        <div>
+        <img class="channelprofile" src="channels4_profile wb.jpg">
+        </div>
+
+        <div class="thumbnailstats">
+        <div>
+        <p class="videotitle">
+        I am legend - Alternate Ending - Warner Bros.
+        </p>
+        </div>
+        <p class="videoauthor">
+            Warner Bros.UK & Ireland <span class="check"> &#10004</span>
+        </p>
+        
+        <div>
+            <p class="videostats">
+            3.6m views <span class="dot">&middot;</span> 5 days ago 
+        </p>
+        </div>
+    
+        </div>
+        
+    </div>
+    </div>
+    </a>
+    <a class="link" href="https://youtu.be/MPfZhgLiK6w?si=bhFqRSL05x2GmtKB">
+      <div class="wholethumbnail">
+        <div class="thumbnailpic">
+        <img class="thumbnail" src="JJK.avif">
+        <div class="videotime2">1:57</div>
+        </div>
+
+    <div class="thumbnailrow">
+        <div>
+        <img class="channelprofile" src="channels4_profile crunchyroll.jpg">
+        </div>
+
+        <div class="thumbnailstats">
+        <div>
+        <p class="videotitle">
+            JUJUTSU KAISEN The Culling Game | Official Trailer | Crunchyroll
+        </p>
+        </div>
+        <p class="videoauthor">
+            Crunchyroll <span class="check"> &#10004</span>
+        </p>
+
+        <div>
+            <p class="videostats">
+            4m views <span class="dot">&middot;</span> 1 day ago 
+        </p>
+        </div>
+    
+        </div>
+        
+    </div>
+    </div>
+    </a>
+    <a class="link" href="https://youtu.be/2V5l6hteEZI?si=ab0pa1MXTkpQd-PF">
+      <div class="wholethumbnail">
+        <div class="thumbnailpic">
+        <img class="thumbnail" src="cornering.avif">
+        <div class="videotime3">8:58</div>
+        </div>
+
+    <div class="thumbnailrow">
+        <div>
+        <img class="channelprofile" src="channels4_profile motojitsu.jpg">
+        </div>
+
+        <div class="thumbnailstats">
+        <div>
+        <p class="videotitle">
+            Overcome Your Cornering Anxiety Forever
+        </p>
+        </div>
+        <p class="videoauthor">
+            Motojitsu <span class="check"> &#10004</span>
+        </p>
+        
+        <div>
+            <p class="videostats">
+            11k views <span class="dot">&middot;</span> 3 days ago 
+        </p>
+        </div>
+    
+        </div>
+        
+    </div>
+    </div>
+    </a>
+    <a class="link" href="https://youtu.be/1LY1AJ48O0Y?si=IA_fsIvSrc3Nf2kJ">
+      <div class="wholethumbnail">
+        <div class="thumbnailpic">
+        <img class="thumbnail" src="Prime.avif">
+        <div class="videotime4">2:12</div>
+        </div>
+
+    <div class="thumbnailrow">
+        <div>
+        <img class="channelprofile" src="channels4_profile prime.jpg">
+        </div>
+
+        <div class="thumbnailstats">
+        <div>
+        <p class="videotitle">
+        The Night Manager Season Two - Official Trailer | Prime Video
+        </p>
+        </div>
+        <p class="videoauthor">
+            Prime Video <span class="check"> &#10004</span>
+        </p>
+        
+        <div>
+            <p class="videostats">
+            11m views <span class="dot">&middot;</span> 10 days ago 
+        </p>
+        </div>
+    
+        </div>
+        
+    </div>
+    </div>
+    </a>
+    <a class="link" href="https://youtu.be/S3kRcurZv5E?si=0XKLQz6SHLlE6f6B">
+      <div class="wholethumbnail">
+        <div class="thumbnailpic">
+        <img class="thumbnail" src="control.avif">
+        <div class="videotime5">3:10</div>
+        </div>
+
+    <div class="thumbnailrow">
+        <div>
+        <img class="channelprofile" src="ign.jpg">
+        </div>
+
+        <div class="thumbnailstats">
+        <div>
+        <p class="videotitle">
+        Control : Resonant - Official Reveal Trailer | The Game Awards 2025
+        </p>
+        </div>
+        <p class="videoauthor">
+            IGN <span class="check"> &#10004</span>
+        </p>
+        
+        <div>
+            <p class="videostats">
+            466k views <span class="dot">&middot;</span> 9 days ago 
+        </p>
+        </div>
+    
+        </div>
+        
+    </div>
+    </div>
+    </a>
+    
+    
+    </div>
+    
+</body>
+
+</html>
